@@ -3,7 +3,7 @@ import re
 import csv
 import os
 
-if os.path.exists('yhq.csv') != True:  # 判断同目录下是否有上次导出表格，有则删除后运行
+if os.path.exists('yhq.csv') != True:  # 判断同目录下是否有上次导出表格，有则删除
     print('------数据开始导出------')
 else:
     os.remove('yhq.csv')
