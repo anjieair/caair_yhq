@@ -3,7 +3,7 @@ import re
 import csv
 import os
 
-if os.path.exists('yhq.csv') != True:  # 判断同目录下是否有上次导出表格，有则删除
+if os.path.exists('yhq.csv') != True:  # 判断同目录下是否有上次导出表格，有则删除后运行
     print('------数据开始导出------')
 else:
     os.remove('yhq.csv')
@@ -25,7 +25,7 @@ r = requests.get(url, headers=headers)
 html = r.text.replace('&nbsp', '')  # 清除返回数据多余字符
 
 tr = re.findall(r'<TR[\s\S]*?\/TR>', html)  # 正则定位所有优惠券相关信息
-fieldnames = ['起飞城市', '到达城市', '舱位', '优惠力度', '优惠码', '有效期', '旅行时间']
+fieldnames = ['起始地', '到达地', '舱位', '优惠力度', '优惠码', '有效期', '旅行时间']
 with open('yhq.csv', 'a', newline='') as f:
     writer = csv.DictWriter(f, fieldnames=fieldnames)
     writer.writeheader()
